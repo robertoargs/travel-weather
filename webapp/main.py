@@ -30,6 +30,19 @@ def root():
 def countries():
     return list(data.keys())
 
+# Return the cities for a given country
+@app.get('/countries/{country}')
+def cities(country: str):
+    """
+    Return a capitalized version of the string.
+    More specifically, make the first character have upper case 
+    and the rest lower case.
+    """
+    standardized_country = country.capitalize()
+    print("This is the result ===>", standardized_country)
+    return list(data[standardized_country].keys())
+
+
 
 @app.get('/countries/{country}/{city}/{month}')
 def monthly_average(country: str, city: str, month: str):
